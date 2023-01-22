@@ -31,7 +31,7 @@
     img {
       padding: var(--spacing);
       background: var(--base);
-      filter: blur(--var(--blur));
+      filter: blur(var(--blur));
     }
 
     .hl {
@@ -57,16 +57,17 @@
   </style>
 
   <script>
-    const input = document.querySelectorAll('.controls input')
+    const input = document.querySelectorAll('.controls input') //friendly reminder, these select everything with a class controls and then anything that's an input
 
     function handleUpdate () {
       const suffix = this.dataset.sizing || '';
       console.log(this.name)
-      console.log(suffix)
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
     } 
 
-    input.forEach(input => input.addEventListener('change', handleUpdate))
-    input.forEach(input => input.addEventListener('mousemove', handleUpdate))
+    input.forEach(input => input.addEventListener('change', handleUpdate));
+    input.forEach(input => input.addEventListener('mousemove', handleUpdate));
+
   </script>
 
 </body>
